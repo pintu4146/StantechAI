@@ -20,7 +20,7 @@ def get_items(db: Session, skip: int = 0, limit: int = 10, title: str | None = N
         query = query.filter(Item.title.ilike(f"%{title}%"))
     return query.offset(skip).limit(limit).all()
 
-def update_item(db: Session, item_id: int, item: schemas.ItemUpdate):
+def update_item(db: Session, item_id: int, item: ItemUpdate):
     db_item = get_item(db, item_id)
     if not db_item:
         return None
